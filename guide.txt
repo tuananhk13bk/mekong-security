@@ -1,0 +1,27 @@
+// Use Fragment when map multiple child (for better performance)
+
+// for native node modules, we need install node-gyp
+// if dev on windows, also need windows-build-tools
+
+
+// if use as a child
+// eg: 
+// <div>
+//  {myComponent}
+// </div>
+// myComponent will be a constant
+// myComponent = (
+  <h1>Hello World</h1>
+)
+
+// if use as a component
+// eg
+// <div>
+//  <myComponent />
+// </div>
+// myComponent will be a function
+// myComponent = () => {
+  return (
+    <h1>Hello World</h1>
+  )
+}

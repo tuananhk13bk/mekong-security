@@ -1,0 +1,22 @@
+{
+  "work_order_items": [
+    "product_full_name",
+    "amount",
+    "type"
+  ],
+  "work_order": [
+    "cus_full_name",
+    "status",
+    "driver_full_name",
+    "driver_id_num",
+    "driver_lic_num",
+    "trans_co_full_name",
+    
+  ]
+}
+
+cus_profile
+driver_profile
+trans_co_profile
+work_order
+work_order_items
