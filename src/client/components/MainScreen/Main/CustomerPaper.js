@@ -16,6 +16,9 @@ const styles = {
   paper: {
     padding: 15,
     height: 250,
+  },
+  typographyBold: {
+    fontWeight: 'bold'
   }
 }
 
@@ -29,7 +32,9 @@ class CustomerPaper extends Component {
             <Grid item sm={4}>
               <img src={Logo} alt="Logo" style={{width: '40px', height: '40px'}}/>
             </Grid>
-            <Grid item sm={8}>
+            <Grid item sm={8}
+              className={classes.typographyBold}
+            >
               {orderOnSelect.cusFullName ? orderOnSelect.cusFullName : 'CTXNK Cuu Tuong'}
             </Grid>
           </Grid>

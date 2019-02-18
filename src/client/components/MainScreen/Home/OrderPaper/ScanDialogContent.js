@@ -4,16 +4,25 @@ import Dialog from '@material-ui/core/Dialog'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import { compose } from 'recompose'
-import { connect } from 'react-redux'
+// import actions
+import { toggleDialog } from '../../../../actions'
+// import from redux
+import { bindActionCreators } from 'redux'
 // import pictures
 import WarningPicture from '../../../../assets/Warning.png'
-import { toggleDialog } from '../../../../actions';
 
-const styles = {
+const styles = theme => ({
+  typography: {
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginTop: 30,
+    marginBottom: 30,
+    marginLeft: 200,
+    marginRight: 200
+  },
+})
 
-}
-
-class ScanDialog extends Component {
+class ScanDialogContent extends Component {
   render() {
     const {
       // style
@@ -24,18 +33,25 @@ class ScanDialog extends Component {
       toggleDialog
     } = this.props
     return (
-      <Dialog
-        open={dialogIsOpen}
-        onClose={() => toggleDialog()}
-      >
-        <Typography>
-          <img src={WarningPicture} alt="Warning Picture" />
-          scanning
-          <br/>
-          RFID31
-        </Typography>
-      </Dialog>
-    )   
+      <div>
+        <Dialog
+          open={dialogIsOpen}
+          onClose={() => toggleDialog()}
+        >
+          <Typography 
+            className={classes.typography} 
+            color="primary"
+            variant="h6"
+            >
+            <img src={WarningPicture} alt="Warning Picture" />
+            <br/>
+            Scanning
+            <br/>
+            RFID31
+          </Typography>
+        </Dialog>
+      </div>
+    )
   }
 }
 
@@ -53,6 +69,6 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   withStyles(styles)
-)(ScanDialog)
+)(ScanDialogContent)
 
 

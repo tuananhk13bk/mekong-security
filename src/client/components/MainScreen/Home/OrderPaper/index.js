@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 // Combine multi HOC
 import { compose } from 'recompose'
 // import components
-import ScanRfidButton from './ScanRfidButton'
+import CreateScanRfidDialog from './CreateScanRfidDialog'
 
 const styles = {
   card: {
@@ -54,7 +54,7 @@ class OrderPaper extends Component {
           className={classes.card}
         >
           <Content orderOfThisPaper={orderOfThisPaper}>
-            <ScanRfidButton />
+            <CreateScanRfidDialog />
           </Content>
         </Card>
       )

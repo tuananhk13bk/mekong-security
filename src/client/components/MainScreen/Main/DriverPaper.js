@@ -19,6 +19,9 @@ const styles = {
   img: {
     width: 100,
     height: 100
+  },
+  typographyBold: {
+    fontWeight: 'bold'
   }
 }
 
@@ -36,8 +39,13 @@ class DriverPaper extends Component {
             />
           </Grid>
           <Grid item xs={7}>
-            <Typography variant="subtitle2" >
-              <strong>{orderOnSelect.driverFullName}</strong>
+            <Typography 
+              className={classes.typographyBold}
+              variant="subtitle2" 
+            >
+              {orderOnSelect.driverFullName}
+            </Typography>
+            <Typography>
               <hr />
               CMND: {' '} {orderOnSelect.driverIdNum}
               <hr />

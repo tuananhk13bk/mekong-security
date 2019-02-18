@@ -8,27 +8,55 @@ import CreditCard from '@material-ui/icons/CreditCard'
 import Create from '@material-ui/icons/Create'
 import Chip from '@material-ui/core/Chip'
 import Avatar from '@material-ui/core/Avatar'
+import { withStyles } from '@material-ui/core/styles'
 // Import from Redux
 import { connect } from 'react-redux'
 // Import from React-router
 import { Link } from 'react-router-dom'
+import { compose } from 'recompose';
+
+const styles = theme => ({
+  root: {
+  },
+  accountIcon: {
+    color: theme.palette.primary.light,
+    verticalAlign: 'bottom',
+    width: 40,
+    height: 40
+  },
+  chip: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: theme.palette.primary.light,
+  },
+  grid: {
+    // height: 199,
+    // marginBottom: 24
+  }
+})
 
 class Header extends Component {
 
   render() {
-    const { rfidCodeOnFind, orderOnSelect } = this.props
+    const { rfidCodeOnFind, orderOnSelect, classes } = this.props
     return (
-      <div>
-        <Grid container style={{marginBottom: 24}}>
+      <div
+        className={classes.root}
+      >
+        <Grid container 
+          className={classes.grid}
+        >
           <Grid item sm={6}>
             <Typography variant='h5' style={{verticalAlign: "text-bottom"}}>
               Xác thực thông tin
             </Typography>
           </Grid>
-          <Grid item sm={6}>
-            <Typography variant="subtitle2" align='right' style={{verticalAlign: 'bottom'}} >
+          <Grid item sm={6} style={{verticalAlign: 'middle'}}>
+            <Typography variant="subtitle2" align='right'  >
               {orderOnSelect.driverFullName}
-              <AccountBox style={{verticalAlign: 'bottom'}} />
+              <AccountBox 
+                className={classes.accountIcon}
+              />
             </Typography>
           </Grid>
         </Grid>
@@ -44,6 +72,7 @@ class Header extends Component {
         
         <Typography variant="subtitle1" style={{marginBottom: 24}}>
           <Chip
+            className={classes.chip}
             label={orderOnSelect.workOrderCode}
             avatar={
               <Avatar>
@@ -53,6 +82,7 @@ class Header extends Component {
             style={{marginRight: 20}}
           />
           <Chip
+            className={classes.chip}
             label={orderOnSelect.rfidSysNum}
             avatar={
               <Avatar>
@@ -74,4 +104,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(Header)
+export default compose(
+  connect(mapStateToProps, null),
+  withStyles(styles)
+)(Header)

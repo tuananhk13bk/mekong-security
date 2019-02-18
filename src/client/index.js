@@ -12,15 +12,20 @@ const store = createStore(rootReducer)
 // Create theme
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import blue from '@material-ui/core/colors/blue'
-import red from '@material-ui/core/colors/red'
-import amber from '@material-ui/core/colors/amber'
+import yellow from '@material-ui/core/colors/yellow'
 // import css
 // import './index.css'
 
 const theme = createMuiTheme({
   palette: {
-    primary: blue,
-    secondary: red,
+    primary: {
+      main: '#2196f3',
+      light: '#2196f3'
+    },
+    secondary: {
+      main: yellow[600],
+      light: yellow[600]
+    },
     type: 'light'
   },
   text: {

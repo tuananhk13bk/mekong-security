@@ -3,7 +3,6 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
 import Vehicle from '../../../../assets/Vehicle.png'
-import { Link } from 'react-router-dom'
 import Logo from '../../../../assets/Logo.png'
 
 const styles = {

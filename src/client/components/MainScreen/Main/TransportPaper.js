@@ -2,22 +2,37 @@ import React, { Component } from 'react'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
 import { withStyles } from '@material-ui/core/styles'
 import Warning from '@material-ui/icons/Warning'
 // import from Redux
 import { connect } from 'react-redux'
 // combine multi HOC
 import { compose } from 'recompose'
-// Import logo
-import Logo from '../../../assets/Logo.png'
+// Import images
+import Transport from '../../../assets/Transport.png'
 
-const styles = {
+const styles = theme => ({
   paper: {
     padding: 15,
-    height: '80%'
+    height: 500
+  },
+  warningIcon: {
+    color: theme.palette.secondary.light,
+    width: 30,
+    height: 30
+  },
+  transportImg: {
+    width: 250,
+    height: 150,
+    marginBottom: 10
+  },
+  grid: {
+    verticalAlign: 'middle'
+  },
+  typographyBold: {
+    fontWeight: 'bold'
   }
-}
+})
 
 class TransportPaper extends Component {
   render() {
@@ -31,11 +46,13 @@ class TransportPaper extends Component {
     return (
       <Paper className={classes.paper}>
         <Grid container>
-          <Grid item sm={6}>
-            <img src={Logo} alt="Logo" style={{width: '100', height: '100'}} />
+          <Grid item sm={12} lg={4}>
+            <img src={Transport} alt="Logo" className={classes.transportImg} />
           </Grid>
-          <Grid item sm={6}>
-            <Typography>
+          <Grid item sm={12} lg={8}>
+            <Typography
+              className={classes.typographyBold}
+            >
               {orderOnSelect.transCoFullName ? orderOnSelect.transCoFullName : 'CT van tai Toan Cau'}
             </Typography>
             <hr/>
@@ -59,7 +76,9 @@ class TransportPaper extends Component {
               </Grid>
               <Grid item sm={2}>
                 <Typography align='center'>
-                  <Warning/>
+                  <Warning
+                    className={classes.warningIcon}
+                  />
                 </Typography>
               </Grid>
               <Grid item sm={4}>

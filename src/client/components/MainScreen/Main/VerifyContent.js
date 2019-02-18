@@ -5,6 +5,7 @@ import CustomerPaper from './CustomerPaper'
 import DriverPaper from './DriverPaper'
 import TransportPaper from './TransportPaper'
 import Header from './Header'
+import ReadyToScan from './ReadyToScan'
 
 class VerifyContent extends Component {
 
@@ -13,12 +14,13 @@ class VerifyContent extends Component {
       <div>
         <Header />
         <Grid container style={{flexGrow: 1}} spacing={24} >
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6} lg={4}>
             <CustomerPaper />
             <DriverPaper />
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6} lg={8}>
             <TransportPaper />
+            <ReadyToScan />
           </Grid>
         </Grid>
       </div>
