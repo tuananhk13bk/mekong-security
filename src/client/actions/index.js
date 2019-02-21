@@ -4,7 +4,8 @@ import {
   SUBMIT_RFID_CODE,
   CHANGE_TEXT_FIELD,
   SELECT_ORDER_TO_VERIFY,
-  TOGGLE_DIALOG
+  TOGGLE_DIALOG,
+  CLEAR_ALL_RFID_STATE
 } from './actionList'
 
 export const readRfidCode = rfidCode => {
@@ -44,5 +45,11 @@ export const selectOrderToVerify = (orderOfThisPaper) => {
 export const toggleDialog = () => {
   return {
     type: TOGGLE_DIALOG
+  }
+}
+
+export const clearAllRfidState = () => {
+  return {
+    type: CLEAR_ALL_RFID_STATE
   }
 }

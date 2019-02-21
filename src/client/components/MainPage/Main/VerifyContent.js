@@ -14,11 +14,11 @@ class VerifyContent extends Component {
       <div>
         <Header />
         <Grid container style={{flexGrow: 1}} spacing={24} >
-          <Grid item xs={12} sm={6} lg={4}>
+          <Grid item xs={12} sm={6} md={6} lg={5}>
             <CustomerPaper />
             <DriverPaper />
           </Grid>
-          <Grid item xs={12} sm={6} lg={8}>
+          <Grid item xs={12} sm={6} md={6} lg={7}>
             <TransportPaper />
             <ReadyToScan />
           </Grid>

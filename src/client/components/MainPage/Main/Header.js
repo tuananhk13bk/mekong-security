@@ -32,31 +32,52 @@ const styles = theme => ({
   grid: {
     // height: 199,
     // marginBottom: 24
+    // background: 'green'
+  },
+  headerTitle: {
+    color: theme.palette.primary.light
+  },
+  accountText: {
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    color: theme.palette.primary.light
   }
 })
 
 class Header extends Component {
 
   render() {
-    const { rfidCodeOnFind, orderOnSelect, classes } = this.props
+    const { orderOnSelect, classes } = this.props
     return (
       <div
         className={classes.root}
       >
         <Grid container 
           className={classes.grid}
+          alignItems="center"
         >
-          <Grid item sm={6}>
-            <Typography variant='h5' style={{verticalAlign: "text-bottom"}}>
+          <Grid item sm={8}>
+            <Typography 
+              variant='h5'
+              className={classes.headerTitle}
+            >
               Xác thực thông tin
             </Typography>
           </Grid>
-          <Grid item sm={6} style={{verticalAlign: 'middle'}}>
-            <Typography variant="subtitle2" align='right'  >
-              {orderOnSelect.driverFullName}
+          <Grid item sm={4}>
+            <Typography 
+              align="right"
+              variant="subtitle1"
+            >
+              
+              <span
+                className={classes.accountText}
+              >
+                {orderOnSelect.driverFullName}
+              </span>
               <AccountBox 
                 className={classes.accountIcon}
-              />
+                />
             </Typography>
           </Grid>
         </Grid>

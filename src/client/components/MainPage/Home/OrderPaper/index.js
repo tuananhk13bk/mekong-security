@@ -53,9 +53,16 @@ class OrderPaper extends Component {
           // class
           className={classes.card}
         >
-          <Content orderOfThisPaper={orderOfThisPaper}>
-            <CreateScanRfidDialog />
-          </Content>
+          <CardActionArea
+            component={Link}
+            to="/main"
+            onClick={()=> selectOrderToVerify(orderOfThisPaper)}
+          >
+            <Content orderOfThisPaper={orderOfThisPaper}>
+              <CreateScanRfidDialog />
+            </Content>
+          </CardActionArea>
+          
         </Card>
       )
     }

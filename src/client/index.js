@@ -34,7 +34,6 @@ const theme = createMuiTheme({
 })
 
 render(
-  
     <Provider store={store} >
       <MuiThemeProvider theme={theme}>
         <App />
@@ -42,4 +41,6 @@ render(
     </Provider>
   , document.getElementById('root')
 )
+
+
 

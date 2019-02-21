@@ -3,10 +3,11 @@ import {
   RECEIVE_DATA_FROM_DB,
   SUBMIT_RFID_CODE,
   CHANGE_TEXT_FIELD,
-  SELECT_ORDER_TO_VERIFY
+  SELECT_ORDER_TO_VERIFY,
+  CLEAR_ALL_RFID_STATE
 } from '../actions/actionList'
 // import my ultility
-import DataProcess from './utils/DataProcess'
+import DataProcess from '../utils/DataProcess'
 
 const initState = {
   codeOnFind: '',
@@ -82,6 +83,8 @@ const rfidCodeReducer = (state=initState, action) => {
         valueInTextFieldIsFound: state.rfidCodeList.includes(action.value),
         orderListOnSearch: DataProcess.filterAllOrderOnSearch(state.dataFromDb, action.value)
       }
+    case CLEAR_ALL_RFID_STATE:
+      return DataProcess.mergeTwoObject(state, initState)
     default:
       return state
   }

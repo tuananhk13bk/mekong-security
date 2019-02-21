@@ -1,16 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 // Import my components
-import MyDrawer from '../components/MainScreen/MyDrawer'
+import MyDrawer from '../components/MainPage/MyDrawer'
 // Import from react router
 import { withRouter } from 'react-router'
 // Import from recompose
@@ -53,7 +47,7 @@ const styles = theme => ({
   },
 });
 
-class MainScreen extends React.Component {
+class MainPage extends React.Component {
   state = {
     mobileOpen: false,
   };
@@ -133,15 +127,7 @@ class MainScreen extends React.Component {
   }
 }
 
-MainScreen.propTypes = {
-  classes: PropTypes.object.isRequired,
-  // Injected by the documentation to work in an iframe.
-  // You won't need it on your project.
-  container: PropTypes.object,
-  theme: PropTypes.object.isRequired,
-};
-
 export default compose(
   withRouter,
   withStyles(styles, {withTheme: true})
-)(MainScreen)
+)(MainPage)

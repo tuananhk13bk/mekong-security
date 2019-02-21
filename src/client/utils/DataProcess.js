@@ -1,4 +1,4 @@
-import convertVietnamese from '../../apis/convertVietnamese'
+import convertVietnamese from './convertVietnamese'
 
 class DataProcess {
   // Filter order on selected

@@ -1,33 +1,33 @@
 import React from 'react'
-import MainScreen from '../screens/MainScreen'
+import MainPage from '../pages/MainPage'
 import { HashRouter, Route, Switch } from 'react-router-dom'
-import VerifyContent from './MainScreen/Main/VerifyContent'
-import SettingsContent from './MainScreen/SettingsContent'
-import HelpContent from './MainScreen/HelpContent'
-import HomeContent from '../components/MainScreen/Home'
+import VerifyContent from './MainPage/Main/VerifyContent'
+import SettingsContent from './MainPage/SettingsContent'
+import HelpContent from './MainPage/HelpContent'
+import HomeContent from './MainPage/Home'
 
 export default () =>
   <HashRouter>
     <Switch>
       <Route exact path="/" render={() => (
-        <MainScreen>
+        <MainPage>
           <HomeContent />
-        </MainScreen>
+        </MainPage>
       )} />
       <Route path="/main" render={() => (
-        <MainScreen>
+        <MainPage>
           <VerifyContent />
-        </MainScreen>
+        </MainPage>
       )} />
       <Route path="/settings" render={() => (
-        <MainScreen>
+        <MainPage>
           <SettingsContent />
-        </MainScreen>
+        </MainPage>
       )} />
       <Route path="/help" render={() => (
-        <MainScreen>
+        <MainPage>
           <HelpContent />
-        </MainScreen>
+        </MainPage>
       )} />
     </Switch>
   </HashRouter> 

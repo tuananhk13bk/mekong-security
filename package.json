@@ -36,6 +36,7 @@
     "camelcase-keys": "^5.0.0",
     "electron": "^4.0.4",
     "express": "^4.16.4",
+    "moment": "^2.24.0",
     "pg": "^7.8.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",

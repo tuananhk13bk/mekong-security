@@ -13,7 +13,7 @@ const pool = new Pool({
 const getAllOrder = (req, res) => {
   // const rfidCode = req.params.rfidCode
   const queryString = 
-    "select \
+    "SELECT \
       work_order.work_order_code, \
       work_order.rfid_sys_num, \
       work_order.cus_full_name, \
@@ -37,10 +37,11 @@ const getAllOrder = (req, res) => {
       to_char(vehicle_profile.vehicle_reg_cert_expdate, 'DD-MM-YYYY') as vehicle_reg_cert_expdate, \
       to_char(vehicle_profile.assurance_expdate, 'DD-MM-YYYY') as assurance_expdate, \
       to_char(vehicle_profile.vehicle_inspectation_cert_expdate, 'DD-MM-YYYY') as vehicle_inspectation_cert_expdate \
-    from work_order inner join work_order_items on \
+    FROM work_order INNER JOIN work_order_items ON \
       work_order.work_order_code = work_order_items.work_order_code \
-        inner join driver_profile on work_order.driver_id_num = driver_profile.driver_id_num \
-        inner join vehicle_profile on work_order.plate_num = vehicle_profile.plate_num \
+        INNER JOIN driver_profile ON work_order.driver_id_num = driver_profile.driver_id_num \
+        INNER JOIN vehicle_profile ON work_order.plate_num = vehicle_profile.plate_num \
+    ORDER BY work_order.work_order_code\
   "
   pool.query(queryString, (err, result) => {
     if (err) {

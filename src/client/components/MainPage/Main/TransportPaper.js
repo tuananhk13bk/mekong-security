@@ -3,18 +3,19 @@ import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
-import Warning from '@material-ui/icons/Warning'
 // import from Redux
 import { connect } from 'react-redux'
 // combine multi HOC
 import { compose } from 'recompose'
 // Import images
 import Transport from '../../../assets/Transport.png'
+// import child components
+import ValidationStatusIcon from './ValidationStatusIcon'
 
 const styles = theme => ({
   paper: {
     padding: 15,
-    height: 500
+    height: 'auto'
   },
   warningIcon: {
     color: theme.palette.secondary.light,
@@ -30,13 +31,22 @@ const styles = theme => ({
     verticalAlign: 'middle'
   },
   typographyBold: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: theme.palette.primary.light
+  },
+  typography: {
+    color: theme.palette.primary.light
+  },
+  validationStatusIcon: {
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    marginRight: 10
   }
 })
 
 class TransportPaper extends Component {
   render() {
-    const { classes, orderOnSelect } = this.props
+    const { classes, orderOnSelect, theme } = this.props
     const certificateExpDateList = [
       ['Chứng nhận đăng kí xe', orderOnSelect.vehicleRegCertExpdate],
       ['Giấy phép vận chuyển hóa chất', orderOnSelect.chemicalTransLicExpdate],
@@ -46,49 +56,64 @@ class TransportPaper extends Component {
     return (
       <Paper className={classes.paper}>
         <Grid container>
-          <Grid item sm={12} lg={4}>
+          <Grid item sm={12} md={12} lg={6}>
             <img src={Transport} alt="Logo" className={classes.transportImg} />
           </Grid>
-          <Grid item sm={12} lg={8}>
+          <Grid item sm={12} md={12} lg={6}>
             <Typography
               className={classes.typographyBold}
             >
               {orderOnSelect.transCoFullName ? orderOnSelect.transCoFullName : 'CT van tai Toan Cau'}
             </Typography>
             <hr/>
-            <Typography>
+            <Typography
+              className={classes.typography}
+            >
               {orderOnSelect.plateNum ? orderOnSelect.plateNum : '54S - 55577'}
             </Typography>
             <hr/>
-            <Typography>
+            <Typography
+              className={classes.typography}
+            >
               Chủ xe: {orderOnSelect.ownerFullName}
             </Typography>
           </Grid>
         </Grid>
-        {certificateExpDateList.map(([title, date]) => (
-          <div key={title}>
-            <hr/>
-            <Grid container>
-              <Grid item sm={6}>
-                <Typography>
-                  {title}
-                </Typography>
+        {certificateExpDateList.map(([title, date]) => {
+          return (
+            <div key={title}>
+              <hr/>
+              <Grid 
+                container
+                alignItems="center"
+              >
+                <Grid item md={7} sm={7}>
+                  <Typography
+                    className={classes.typography}
+                  >
+                    {title}
+                  </Typography>
+                </Grid>
+                <Grid item md={1} sm={1}>
+                  <Typography
+                    className={classes.typography}
+                    align="center"
+                  >
+                    <ValidationStatusIcon inputDate={date} />
+                  </Typography>
+                </Grid>
+                <Grid item md={4} sm={4}>
+                  <Typography
+                    className={classes.typography}
+                    align="center"
+                  >
+                    {date}
+                  </Typography>
+                </Grid>
               </Grid>
-              <Grid item sm={2}>
-                <Typography align='center'>
-                  <Warning
-                    className={classes.warningIcon}
-                  />
-                </Typography>
-              </Grid>
-              <Grid item sm={4}>
-                <Typography>
-                  {date}
-                </Typography>
-              </Grid>
-            </Grid>
-          </div>
-        ))}
+            </div>
+          )
+        })}
         
       </Paper>
     )
