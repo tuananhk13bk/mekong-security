@@ -31,12 +31,13 @@ const styles = {
 
 class Content extends Component {
   render() {
-    const { classes, orderOfThisPaper, children } = this.props
+    const { classes, orderOfThisPaper, children, backgroundColor } = this.props
     return (
       <Grid 
         container 
         className={classes.grid}
         alignItems="center"
+        style={{ background: backgroundColor }}
       >
         <Grid item sm={2} md={2} lg={2} >
           <Typography className={classes.typography}>
@@ -77,7 +78,6 @@ class Content extends Component {
         </Grid>
         <Grid item sm={1} md={2} lg={2}>
           <Typography className={classes.typography}>
-            {/* <strong>{orderOfThisPaper.rfidSysNum}</strong> */}
             {children}
           </Typography>
         </Grid>

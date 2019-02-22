@@ -12,7 +12,6 @@ import { bindActionCreators } from 'redux'
 import { withStyles } from '@material-ui/core/styles'
 // combine multi HOC
 import { compose } from 'recompose'
-import { Link } from 'react-router-dom'
 
 const styles = {
   root: {
@@ -37,8 +36,6 @@ class Home extends Component {
       // styles
       classes
     } = this.props
-    // const orderArrayToMap = (codeOnFind === '' ? dataFromDb : dataFromDb)
-    // console.log(orderArrayToMap)
     let orderArrayToMap
     if (codeOnFind === '') {
       orderArrayToMap = dataFromDb

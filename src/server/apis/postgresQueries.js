@@ -24,23 +24,23 @@ const getAllOrder = (req, res) => {
       work_order_items.product_full_name, \
       work_order_items.amount, \
       work_order_items.product_type, \
-      driver_profile.driver_full_name, \
-      to_char(driver_profile.driver_id_expdate, 'DD-MM-YYYY') as driver_id_expdate, \
-      driver_profile.driver_lic_num, \
-      to_char(driver_profile.driver_lic_expdate, 'DD-MM-YYYY') as driver_lic_expdate, \
-      driver_profile.fire_fighting_cert_num, \
-      to_char(driver_profile.fire_fighting_expdate, 'DD-MM-YYYY') as fire_fighting_expdate, \
-      vehicle_profile.owner_full_name, \
-      vehicle_profile.chemical_trans_lic_num, \
-      to_char(vehicle_profile.chemical_trans_lic_expdate, 'DD-MM-YYYY') as chemical_trans_lic_expdate, \
-      vehicle_profile.vehicle_reg_cert_num, \
-      to_char(vehicle_profile.vehicle_reg_cert_expdate, 'DD-MM-YYYY') as vehicle_reg_cert_expdate, \
-      to_char(vehicle_profile.assurance_expdate, 'DD-MM-YYYY') as assurance_expdate, \
-      to_char(vehicle_profile.vehicle_inspectation_cert_expdate, 'DD-MM-YYYY') as vehicle_inspectation_cert_expdate \
+      profile_driver.driver_full_name, \
+      to_char(profile_driver.driver_id_expdate, 'DD-MM-YYYY') as driver_id_expdate, \
+      profile_driver.driver_lic_num, \
+      to_char(profile_driver.driver_lic_expdate, 'DD-MM-YYYY') as driver_lic_expdate, \
+      profile_driver.fire_fighting_cert_num, \
+      to_char(profile_driver.fire_fighting_expdate, 'DD-MM-YYYY') as fire_fighting_expdate, \
+      profile_vehicle.owner_full_name, \
+      profile_vehicle.chemical_trans_lic_num, \
+      to_char(profile_vehicle.chemical_trans_lic_expdate, 'DD-MM-YYYY') as chemical_trans_lic_expdate, \
+      profile_vehicle.vehicle_reg_cert_num, \
+      to_char(profile_vehicle.vehicle_reg_cert_expdate, 'DD-MM-YYYY') as vehicle_reg_cert_expdate, \
+      to_char(profile_vehicle.assurance_expdate, 'DD-MM-YYYY') as assurance_expdate, \
+      to_char(profile_vehicle.vehicle_inspectation_cert_expdate, 'DD-MM-YYYY') as vehicle_inspectation_cert_expdate \
     FROM work_order INNER JOIN work_order_items ON \
       work_order.work_order_code = work_order_items.work_order_code \
-        INNER JOIN driver_profile ON work_order.driver_id_num = driver_profile.driver_id_num \
-        INNER JOIN vehicle_profile ON work_order.plate_num = vehicle_profile.plate_num \
+        INNER JOIN profile_driver ON work_order.driver_id_num = profile_driver.driver_id_num \
+        INNER JOIN profile_vehicle ON work_order.plate_num = profile_vehicle.plate_num \
     ORDER BY work_order.work_order_code\
   "
   pool.query(queryString, (err, result) => {

@@ -11,8 +11,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 // Combine multi HOC
 import { compose } from 'recompose'
-// import components
-import CreateScanRfidDialog from './CreateScanRfidDialog'
+// import utils
+import setOrderPaperBackgroundColor from '../../../../utils/setOrderPaperBackgroundColor'
 
 const styles = {
   card: {
@@ -29,63 +29,36 @@ class OrderPaper extends Component {
             // actions
             selectOrderToVerify
           } = this.props
-    // already checkout
-    if (orderOfThisPaper.status.toLowerCase().replace(/-| /g, "") === 'checkout') {
-      const backgrounColor = '#F1EA7F'
-      return (
-        <Card 
-          // condition style
-          style={{ background: backgrounColor }}
-          // class
-          className={classes.card}
+    const dateToCheckList = [
+      orderOfThisPaper.driverIdExpdate,
+      orderOfThisPaper.driverLicExpdate,
+      orderOfThisPaper.fireFightingExpdate,
+      orderOfThisPaper.vehicleRegCertExpdate,
+      orderOfThisPaper.chemicalTransLicExpdate,
+      orderOfThisPaper.assuranceExpdate,
+      orderOfThisPaper.vehicleInspectationCertExpdate
+    ]
+    const backgroundColor = setOrderPaperBackgroundColor(dateToCheckList)
+    // not Authenticated
+    return (
+      <Card 
+        // condition style
+        // style={{ background: backgrounColor }}
+        // class
+        className={classes.card}
+      >
+        <CardActionArea
+          component={Link}
+          to="/main"
+          onClick={()=> selectOrderToVerify(orderOfThisPaper)}
         >
-          <Content orderOfThisPaper={orderOfThisPaper} />
-        </Card>
-      )
-    }
-    // already checkin
-    else if (orderOfThisPaper.status.toLowerCase().replace(/-| /g, "") === 'checkin') {
-      const backgrounColor = null
-      return (
-        <Card 
-          // condition style
-          style={{ background: backgrounColor }}
-          // class
-          className={classes.card}
-        >
-          <CardActionArea
-            component={Link}
-            to="/main"
-            onClick={()=> selectOrderToVerify(orderOfThisPaper)}
-          >
-            <Content orderOfThisPaper={orderOfThisPaper}>
-              <CreateScanRfidDialog />
-            </Content>
-          </CardActionArea>
-          
-        </Card>
-      )
-    }
-    // not checkin
-    else {
-      const backgrounColor = null
-      return (
-        <Card 
-          // condition style
-          style={{ background: backgrounColor }}
-          // class
-          className={classes.card}
-        >
-          <CardActionArea
-            component={Link}
-            to="/main"
-            onClick={()=> selectOrderToVerify(orderOfThisPaper)}
-          >
-            <Content orderOfThisPaper={orderOfThisPaper} />
-          </CardActionArea>
-        </Card>
-      )
-    }
+          <Content 
+            orderOfThisPaper={orderOfThisPaper} 
+            backgroundColor={backgroundColor}
+          />
+        </CardActionArea>
+      </Card>
+    )
   }
 }
 

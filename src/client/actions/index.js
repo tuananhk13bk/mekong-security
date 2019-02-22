@@ -5,7 +5,8 @@ import {
   CHANGE_TEXT_FIELD,
   SELECT_ORDER_TO_VERIFY,
   TOGGLE_DIALOG,
-  CLEAR_ALL_RFID_STATE
+  CLEAR_ALL_RFID_STATE,
+  SET_ORDER_PAPER_BACKGROUND_COLOR
 } from './actionList'
 
 export const readRfidCode = rfidCode => {
@@ -51,5 +52,13 @@ export const toggleDialog = () => {
 export const clearAllRfidState = () => {
   return {
     type: CLEAR_ALL_RFID_STATE
+  }
+}
+
+export const setOrderPaperBackgroundColor = (color) => {
+  console.log(color)
+  return {
+    type: SET_ORDER_PAPER_BACKGROUND_COLOR,
+    color
   }
 }
