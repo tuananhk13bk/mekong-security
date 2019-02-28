@@ -51,26 +51,45 @@ class DriverPaper extends Component {
             />
           </Grid>
           <Grid item xs={7}>
-            <Typography 
-              className={classes.typographyBold}
-              variant="subtitle2" 
-            >
-              {orderOnSelect.driverFullName}
-            </Typography>
-            <Typography
-              className={classes.typography}
-            >
-              <hr />
-              CMND: {' '} {orderOnSelect.driverIdNum}
-              <hr />
-              Ngày hết hạn:
-              <span
-                className={classes.iconSpan}
-              >
+            <Grid container>
+              <Grid item sm={12}>
+                <Typography
+                  className={classes.typographyBold}
+                  variant="subtitle2"
+                >
+                  {orderOnSelect.driverFullName}
+                </Typography>
+              </Grid>
+            </Grid>
+            <hr/>
+            <Grid container>
+              <Grid item sm={6} >
+                <Typography className={classes.typography}>
+                  CMND:
+                </Typography>
+              </Grid>
+              <Grid item sm={6} >
+                <Typography className={classes.typography}>
+                  {orderOnSelect.driverIdNum}
+                </Typography>
+              </Grid>
+            </Grid>
+            <hr/>
+            <Grid container alignItems="center">
+              <Grid item sm={12} md={5} >
+                <Typography className={classes.typography}>
+                  Ngày hết hạn:
+                </Typography>
+              </Grid>
+              <Grid item sm={2} md={2} >
                 <ValidationStatusIcon inputDate={orderOnSelect.driverIdExpdate} />
-              </span>
-              {orderOnSelect.driverIdExpdate}
-            </Typography>
+              </Grid>
+              <Grid item sm={10} md={5} >
+                <Typography className={classes.typography}>
+                  {orderOnSelect.driverIdExpdate}
+                </Typography>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
         <hr/>
@@ -82,9 +101,9 @@ class DriverPaper extends Component {
               Bằng lái số:
             </Typography>
           </Grid>
-          <Grid item sm={1}>
+          <Grid item sm={2}>
           </Grid>
-          <Grid item sm={4}>
+          <Grid item sm={3}>
             <Typography
               className={classes.typography}
             >
@@ -101,14 +120,14 @@ class DriverPaper extends Component {
               Ngày hết hạn:
             </Typography>
           </Grid>
-          <Grid item sm={1}>
+          <Grid item sm={2}>
             <Typography
               className={classes.typography}
             >
               <ValidationStatusIcon inputDate={orderOnSelect.driverLicExpdate} />
             </Typography>
           </Grid>
-          <Grid item sm={4}>
+          <Grid item sm={3}>
             <Typography
               className={classes.typography}
             >
@@ -126,9 +145,9 @@ class DriverPaper extends Component {
               nghiệp vụ phòng cháy chữa cháy:
             </Typography>
           </Grid>
-          <Grid item sm={1}>
+          <Grid item sm={2}>
           </Grid>
-          <Grid item sm={4}>
+          <Grid item sm={3}>
             <Typography
               className={classes.typography}
             >
@@ -145,14 +164,14 @@ class DriverPaper extends Component {
               Ngày hết hạn:
             </Typography>
           </Grid>
-          <Grid item sm={1}>
+          <Grid item sm={2}>
             <Typography
               className={classes.typography}
             >
               <ValidationStatusIcon inputDate={orderOnSelect.driverLicExpdate} />
             </Typography>
           </Grid>
-          <Grid item sm={4}>
+          <Grid item sm={3}>
             <Typography
               className={classes.typography}
             >

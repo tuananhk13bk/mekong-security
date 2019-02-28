@@ -1,15 +1,7 @@
-// Convert object keys to camelCase
+const dbConnect = require('./dbConnect')
 const camelcaseKeys = require('camelcase-keys')
-const moment = require('moment')
-const Pool = require('pg').Pool
-const dbConfig = require('./db/dbConfig')
-const pool = new Pool(dbConfig)
 
-const dbConnect = require('./db/dbConnect')
-
-async function getAllOrder(req, res) {
-  // const rfidCode = req.params.rfidCode
-  const queryString = 
+const QUERY_STRING = 
     `SELECT 
       work_order.work_order_code, 
       work_order.rfid_sys_num, 
@@ -45,52 +37,20 @@ async function getAllOrder(req, res) {
     WHERE work_order.status_id = 3
     ORDER BY work_order.work_order_code
   `
-  const client = await pool.connect()
-  await client.query(queryString, (err, result) => {
-    if (err) {
-      throw err
-    }
+
+async function readAllOrder(req, res) {
+  const client = await dbConnect()
+  try {
+    const result = await client.query(QUERY_STRING)
     res.status(200).json(camelcaseKeys(result.rows))
-  })
-  client.release()
+  }
+  catch(err) {
+    throw err
+  }
+  finally {
+    client.end()
+    console.log('Db disconnected')
+  }
 }
 
-async function updateOrderStatus(req, res) {
-  const id = req.params.id
-  const { status } = req.body
-  const client = await pool.connect()
-  await client.query(
-    'UPDATE work_order SET status = $2 WHERE work_order_code = $1',
-    [id, status],
-    (err, result) => {
-      if (err) throw err
-      res.status(200).send(`Status modified with order code: ${id}`)
-    }
-  )
-  client.release()
-}
-
-async function createRfidEvent(req, res) {
-  // const id = req.params.id
-  const { rfidTagNum, rfidReaderCode } = req.body
-  const readDateTime = moment().format('DD-MM-YYYY')
-  const client = await pool.connect()
-  await client.query(
-    `
-      INSERT INTO rfid_events (rfid_tag_num, rfid_reader_code, read_date_time)
-      VALUES($1, $2, to_date($3, 'DD-MM-YYYY'))
-    `,
-    [rfidTagNum, rfidReaderCode, readDateTime],
-    (err, result) => {
-      if (err) throw err
-      res.status(201).send(`Rfid event added with rfidTagNum: ${rfidTagNum}`)
-    }
-  )
-  client.release()
-}
-
-module.exports = {
-  getAllOrder,
-  updateOrderStatus,
-  createRfidEvent,
-}
+module.exports = readAllOrder

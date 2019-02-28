@@ -3,6 +3,9 @@ import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
+  root: {
+    marginTop: 10
+  },
   paragraph: {
     marginTop: theme.spacing.unit*4
   },
@@ -22,7 +25,7 @@ const styles = theme => ({
 })
 
 const HelpContent = ({ classes }) => (
-  <div>
+  <div className={classes.root}>
     <Typography
       className={classes.header}
       variant="h5"

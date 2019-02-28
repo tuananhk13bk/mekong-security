@@ -13,9 +13,9 @@ import ScanDialogContent from '../Home/OrderPaper/ScanDialogContent'
 
 const styles = theme => ({
   button: {
-    padding: 20,
+    padding: 15,
     width: '100%',
-    height: '10%'
+    height: 'auto'
   },
   buttonText: {
     color: theme.palette.primary.light,

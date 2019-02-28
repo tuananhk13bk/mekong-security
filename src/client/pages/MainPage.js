@@ -46,7 +46,6 @@ const styles = theme => ({
     // padding: theme.spacing.unit,
     marginLeft: theme.spacing.unit *3,
     marginRight: theme.spacing.unit *3,
-    marginTop: 10
   },
 });
 

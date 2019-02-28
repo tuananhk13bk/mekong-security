@@ -1,31 +1,31 @@
-// const test = ['a', 'b','c', 'a', 'a', 'b', 'b', 'b', 'c', 'c', 'c']
-// const test2 = ['a', 'a', 'a']
+const Pool = require('pg').Pool
+const dbConfig = require('./src/server/apis/db/dbConfig')
+const pool = new Pool(dbConfig)
 
-// const yellow = (arr) => {
-//   for (let e of arr) {
-//     if (e === 'b' || e === 'c') {
-//       return e
-//     }
-//   }
-// }
-
-// const setColor = (arr, callback) => {
-//   callback(arr, (valid) => {
-//     if (valid) {
-//       return 'yellow'
-//     } else {
-//       return 'white'
-//     }
-//   })
-// }
-
-// console.log(setColor(test2, yellow))
-
-const myfunc = () => {
-  if (4) {
-    return this
+async function dbConnect() {
+  try {
+    const client = await pool.connect()
+    console.log('db connected')
+    return client
+  }
+  catch(err) {
+    console.log(err)
   }
 }
 
-console.log(myfunc)
+async function query() {
+  const client = await dbConnect()
+  try {
+    const result = await client.query('SELEC * FROM work_order')
+    console.log(result)
+  }
+  catch(err) {
+    console.log(err)
+  }
+  finally {
+    client.end()
+    console.log('db disconnected')
+  }
+}
 
+query()

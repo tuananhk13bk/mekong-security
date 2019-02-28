@@ -31,9 +31,7 @@ const styles = theme => ({
     color: theme.palette.primary.light,
   },
   grid: {
-    // height: 199,
-    // marginBottom: 24
-    // background: 'green'
+    marginBottom: 10
   },
   headerTitle: {
     color: theme.palette.primary.light

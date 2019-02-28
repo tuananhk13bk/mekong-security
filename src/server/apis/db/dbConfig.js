@@ -4,6 +4,7 @@ const dbConfig = {
   database: 'vcdn',
   password: 'Y8zpVGNv4r36',
   port: 5432,
+  idleTimeoutMillis: 1000
 }
 
 module.exports = dbConfig

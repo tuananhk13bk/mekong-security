@@ -37,7 +37,7 @@ class ScanDialogContent extends Component {
   handleSubmitRfid() {
     const { orderOnSelect, clearAllRfidState, history, toggleDialog } = this.props
     const updateValue = {
-      status: 'Authenticated'
+      statusId: 5
     }
     updateOrderStatus(orderOnSelect.workOrderCode, updateValue)
     clearAllRfidState()
@@ -79,9 +79,11 @@ class ScanDialogContent extends Component {
             <TextField
               value={codeOnFind.toUpperCase()}
               onChange={(event) => changeTextField(event.target.value)}
-            >
-
-            </TextField>
+              placeholder="RFID Tag Num"
+            ></TextField>
+            <TextField
+              placeholder="RFID Reader Code"
+            ></TextField>
             <Button
               onClick={() => this.handleSubmitRfid()}
             >

@@ -18,7 +18,8 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit*3
   },
   header: {
-    color: '#2196f3'
+    color: '#2196f3',
+    marginTop: 10
   }
 })
 
