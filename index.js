@@ -12,7 +12,7 @@ let mainWindow
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     width: 1024,
-    height: 600
+    height: 600,
   })
   mainWindow.setMenu(null)
   // mainWindow.loadURL('http://localhost:8000/')

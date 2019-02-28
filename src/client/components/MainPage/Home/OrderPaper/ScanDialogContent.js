@@ -36,19 +36,12 @@ class ScanDialogContent extends Component {
 
   handleSubmitRfid() {
     const { orderOnSelect, clearAllRfidState, history, toggleDialog } = this.props
-    let updateValue
-    if (orderOnSelect.status === 'Check-in') {
-      updateValue = {
-        status: 'Check-out'
-      } 
-    } else {
-      updateValue = {
-        status: 'Check-in'
-      }
+    const updateValue = {
+      status: 'Authenticated'
     }
-    updateOrderStatus(orderOnSelect.workOrderCode, updateValue),
+    updateOrderStatus(orderOnSelect.workOrderCode, updateValue)
     clearAllRfidState()
-    history.push('/'),
+    history.push('/')
     toggleDialog()
   }
 

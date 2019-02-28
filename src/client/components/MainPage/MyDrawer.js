@@ -6,7 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
-import Grid from '@material-ui/core/Grid'
+import { withStyles } from '@material-ui/core/styles'
 // Import company logo file
 import Logo from '../../assets/Logo.png'
 // Import material-ui-icons
@@ -44,19 +44,36 @@ const utilitiesDrawerList = [
   }
 ]
 
+const styles = {
+  menuText: {
+    color: 'white'
+  },
+  headerText: {
+    color: 'white',
+    padding: 10
+  },
+  headerIcon: {
+    width: 40, 
+    height: 40, 
+    display: 'inline-block', 
+    verticalAlign: 'middle', 
+    background: 'white',
+    marginRight: 10
+  }
+}
+
 class MyDrawer extends Component {
   render() {
+    const { classes } = this.props
     return (
       <div>
-        <Typography style={{ padding: 10, color: "white" }} variant="subtitle2">
+        <Typography 
+          className={classes.headerText}
+          variant="subtitle1"
+        >
           <Avatar 
             src={Logo} alt="Company-Logo" 
-            style={{ width: 40, 
-                     height: 40, 
-                     display: 'inline-block', 
-                     verticalAlign: 'middle', 
-                     background: 'white',
-                     marginRight: 20 }} 
+            className={classes.headerIcon}
           />
             Mekong Port
         </Typography>
@@ -70,7 +87,16 @@ class MyDrawer extends Component {
               to={`/${id}`}
             >
               <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={title} />
+              <ListItemText 
+                primary={
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.menuText}
+                  >
+                    {title}
+                  </Typography>
+                } 
+              />
             </ListItem>
           ))}
         </List>
@@ -84,7 +110,16 @@ class MyDrawer extends Component {
               to={`/${id}`}
             >
               <ListItemIcon>{icon}</ListItemIcon>
-              <ListItemText primary={title} />
+              <ListItemText 
+                primary={
+                  <Typography
+                    variant="subtitle1"
+                    className={classes.menuText}
+                  >
+                    {title}
+                  </Typography>
+                } 
+              />
             </ListItem>
           ))}
         </List>
@@ -93,4 +128,4 @@ class MyDrawer extends Component {
   }
 }
 
-export default MyDrawer
+export default withStyles(styles)(MyDrawer)

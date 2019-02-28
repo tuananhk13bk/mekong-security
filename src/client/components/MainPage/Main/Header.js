@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import AccountBox from '@material-ui/icons/AccountBox'
-import CreditCard from '@material-ui/icons/CreditCard'
 import Create from '@material-ui/icons/Create'
 import Chip from '@material-ui/core/Chip'
 import Avatar from '@material-ui/core/Avatar'
@@ -20,9 +19,11 @@ const styles = theme => ({
   },
   accountIcon: {
     color: theme.palette.primary.light,
-    verticalAlign: 'bottom',
     width: 40,
     height: 40
+  },
+  accountText: {
+    color: theme.palette.primary.light
   },
   chip: {
     fontSize: 16,
@@ -37,11 +38,11 @@ const styles = theme => ({
   headerTitle: {
     color: theme.palette.primary.light
   },
-  accountText: {
-    display: 'inline-block',
-    verticalAlign: 'middle',
-    color: theme.palette.primary.light
-  }
+  accountSpan: {
+    display: 'inline-block', 
+    verticalAlign: 'middle', 
+    marginLeft: 10
+  },
 })
 
 class Header extends Component {
@@ -68,16 +69,14 @@ class Header extends Component {
             <Typography 
               align="right"
               variant="subtitle1"
+              className={classes.accountText}
             >
-              
+              {orderOnSelect.driverFullName}
               <span
-                className={classes.accountText}
+                className={classes.accountSpan}
               >
-                {orderOnSelect.driverFullName}
+                <AccountBox className={classes.accountIcon} />
               </span>
-              <AccountBox 
-                className={classes.accountIcon}
-                />
             </Typography>
           </Grid>
         </Grid>
@@ -101,15 +100,6 @@ class Header extends Component {
               </Avatar>
             }
             style={{marginRight: 20}}
-          />
-          <Chip
-            className={classes.chip}
-            label={orderOnSelect.rfidSysNum}
-            avatar={
-              <Avatar>
-                <CreditCard />
-              </Avatar>
-            }
           />
         </Typography>
       </div>

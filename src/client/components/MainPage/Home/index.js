@@ -13,11 +13,8 @@ import { withStyles } from '@material-ui/core/styles'
 // combine multi HOC
 import { compose } from 'recompose'
 
-const styles = {
-  root: {
-    marginBottom: 10
-  }
-}
+const styles = theme => ({
+})
 
 class Home extends Component {
 

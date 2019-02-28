@@ -15,6 +15,7 @@ const styles = theme => ({
   button: {
     padding: 20,
     width: '100%',
+    height: '10%'
   },
   buttonText: {
     color: theme.palette.primary.light,

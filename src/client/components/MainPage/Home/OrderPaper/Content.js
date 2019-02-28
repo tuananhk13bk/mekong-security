@@ -31,13 +31,12 @@ const styles = {
 
 class Content extends Component {
   render() {
-    const { classes, orderOfThisPaper, children, backgroundColor } = this.props
+    const { classes, orderOfThisPaper, children } = this.props
     return (
       <Grid 
         container 
         className={classes.grid}
         alignItems="center"
-        style={{ background: backgroundColor }}
       >
         <Grid item sm={2} md={2} lg={2} >
           <Typography className={classes.typography}>
@@ -49,7 +48,7 @@ class Content extends Component {
             <img src={Logo} alt="Logo" className={classes.customerLogo} />
           </Typography>
         </Grid>
-        <Grid item sm={2} md={2} lg={2}>
+        <Grid item sm={2} md={3} lg={3}>
           <Typography className={classes.typography}>
             <strong>{orderOfThisPaper.cusFullName}</strong>
             <br/>
@@ -69,16 +68,11 @@ class Content extends Component {
             {orderOfThisPaper.driverIdNum}
           </Typography>
         </Grid>
-        <Grid item sm={2} md={1} lg={1}>
+        <Grid item sm={2} md={2} lg={2}>
           <Typography className={classes.typography}>
             <img src={Vehicle} alt="Vehicle" className={classes.vehicleLogo} />
             <br/>
             {orderOfThisPaper.plateNum}
-          </Typography>
-        </Grid>
-        <Grid item sm={1} md={2} lg={2}>
-          <Typography className={classes.typography}>
-            {children}
           </Typography>
         </Grid>
       </Grid>

@@ -13,18 +13,21 @@ import { changeTextField } from '../../../actions'
 // combine multi HOC
 import { compose } from 'recompose'
 
-const styles = {
+const styles = theme => ({
+  root: {
+    marginBottom: theme.spacing.unit*3
+  },
   header: {
     color: '#2196f3'
   }
-}
+})
 
 class Header extends Component {
 
   render() {
     const { codeOnFind, orderOnSelect, changeTextField, classes } = this.props
     return (
-      <div>
+      <div className={classes.root}>
         <Typography variant='h5' className={classes.header}>
           Theo dõi xe
         </Typography>
@@ -36,7 +39,7 @@ class Header extends Component {
             
           </Grid>
           <Grid item sm={6} >
-            <Typography align="right" style={{ marginBottom: 15 }}>
+            <Typography align="right">
               <TextField
                 autoFocus
                 autoComplete='off'

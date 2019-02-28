@@ -30,7 +30,7 @@ const styles = theme => ({
     // height: 50,
   },
   menuButton: {
-    marginRight: 20,
+    marginRight: 10,
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
@@ -43,7 +43,10 @@ const styles = theme => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3,
+    // padding: theme.spacing.unit,
+    marginLeft: theme.spacing.unit *3,
+    marginRight: theme.spacing.unit *3,
+    marginTop: 10
   },
 });
 
@@ -75,21 +78,6 @@ class MainPage extends React.Component {
     return (
       <div className={classes.root}>
         <CssBaseline />
-        {/* <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerToggle}
-              className={classes.menuButton}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" color="inherit" noWrap>
-              {this.handleAppBarTitleChange(this.props.history.location.pathname)}
-            </Typography>
-          </Toolbar>
-        </AppBar> */}
         <nav className={classes.drawer}>
           {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Hidden smUp implementation="css">
@@ -119,7 +107,6 @@ class MainPage extends React.Component {
           </Hidden>
         </nav>
         <main className={classes.content}>
-          {/* <div className={classes.toolbar} /> */}
           {children}
         </main>
       </div>

@@ -2,8 +2,8 @@
 
 async function updateOrderStatus(id, data) {
   try {
-    await fetch(`/api/db/put/${id}`, {
-      // await fetch(`http://localhost:8000/api/db/put/${id}`, {
+    // await fetch(`/api/db/put/${id}`, {
+      await fetch(`http://localhost:8000/api/db/put/${id}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',

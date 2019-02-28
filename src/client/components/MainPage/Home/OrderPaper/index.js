@@ -14,11 +14,11 @@ import { compose } from 'recompose'
 // import utils
 import setOrderPaperBackgroundColor from '../../../../utils/setOrderPaperBackgroundColor'
 
-const styles = {
+const styles = theme => ({
   card: {
-    marginBottom: 15
+    marginBottom: theme.spacing.unit*3
   }
-}
+})
 
 class OrderPaper extends Component {
   render() {
@@ -42,10 +42,8 @@ class OrderPaper extends Component {
     // not Authenticated
     return (
       <Card 
-        // condition style
-        // style={{ background: backgrounColor }}
-        // class
         className={classes.card}
+        style={{ background: backgroundColor }}
       >
         <CardActionArea
           component={Link}
@@ -54,7 +52,6 @@ class OrderPaper extends Component {
         >
           <Content 
             orderOfThisPaper={orderOfThisPaper} 
-            backgroundColor={backgroundColor}
           />
         </CardActionArea>
       </Card>

@@ -28,6 +28,12 @@ const styles = theme => ({
   },
   typography: {
     color: theme.palette.primary.light
+  },
+  iconSpan: {
+    display: 'inline-block', 
+    verticalAlign: 'middle', 
+    marginRight: 10,
+    marginLeft: 10
   }
 })
 
@@ -57,7 +63,13 @@ class DriverPaper extends Component {
               <hr />
               CMND: {' '} {orderOnSelect.driverIdNum}
               <hr />
-              Ngày hết hạn: {' '} {orderOnSelect.driverIdExpdate}
+              Ngày hết hạn:
+              <span
+                className={classes.iconSpan}
+              >
+                <ValidationStatusIcon inputDate={orderOnSelect.driverIdExpdate} />
+              </span>
+              {orderOnSelect.driverIdExpdate}
             </Typography>
           </Grid>
         </Grid>

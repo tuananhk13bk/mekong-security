@@ -24,21 +24,27 @@ const styles = theme => ({
     color: theme.palette.primary.light
   },
   companyLogo: {
-    width: 80,
-    height: 80
+    width: 50,
+    height: 50
   }
 })
 
 class CustomerPaper extends Component {
   render() {
     const { classes, orderOnSelect } = this.props
+    const customerPaperList = [
+      ['Mặt hàng', orderOnSelect.productFullName],
+      ['Số lượng', `${orderOnSelect.amount} ${orderOnSelect.unit}`],
+      ['Loại hàng', orderOnSelect.productType],
+      ['Trạng thái đơn hàng', orderOnSelect.status]
+    ]
     return (
       <Paper className={classes.paper} >
         <Grid container>
-          <Grid item sm={4}>
+          <Grid item sm={3}>
             <img src={Logo} alt="Logo" className={classes.companyLogo}/>
           </Grid>
-          <Grid item sm={8}>
+          <Grid item sm={9}>
             <Typography 
               className={classes.typographyBold}
               variant="subtitle2"
@@ -47,82 +53,29 @@ class CustomerPaper extends Component {
             </Typography> 
           </Grid>
         </Grid>
-        <hr />
-        <Grid container>
-          <Grid item sm={6} xs={6}>
-            <Typography 
-              className={classes.typography}
-              variant="subtitle2"
-            >
-              Mặt hàng:
-            </Typography>
-          </Grid>
-          <Grid item sm={6} xs={6}>
-            <Typography 
-              className={classes.typography}
-              variant="subtitle2"
-            >
-              {orderOnSelect.productFullName ? orderOnSelect.productFullName : 'Test' }
-            </Typography>
-          </Grid>
-        </Grid>
-        <hr />
-        <Grid container>
-          <Grid item sm={6} xs={6}>
-            <Typography 
-              className={classes.typography}
-              variant="subtitle2"
-            >
-              Số lượng:
-            </Typography>
-          </Grid>
-          <Grid item sm={6} xs={6}>
-            <Typography 
-              className={classes.typography}
-              variant="subtitle2"
-            >
-              {orderOnSelect.amount ? orderOnSelect.amount : 'Test' }
-            </Typography>
-          </Grid>
-        </Grid>
-        <hr />
-        <Grid container>
-          <Grid item sm={6} xs={6}>
-            <Typography 
-              className={classes.typography}
-              variant="subtitle2"
-            >
-              Loại hàng:
-            </Typography>
-          </Grid>
-          <Grid item sm={6} xs={6}>
-            <Typography 
-              className={classes.typography}
-              variant="subtitle2"
-            >
-              {orderOnSelect.itemType ? orderOnSelect.itemType : 'Test' }
-            </Typography>
-          </Grid>
-        </Grid>
-        <hr />
-        <Grid container>
-          <Grid item sm={6} xs={6}>
-            <Typography 
-              className={classes.typography}
-              variant="subtitle2"
-            >
-              Trạng thái:
-            </Typography>
-          </Grid>
-          <Grid item sm={6} xs={6}>
-            <Typography 
-              className={classes.typography}
-              variant="subtitle2"
-            >
-              {orderOnSelect.status ? orderOnSelect.status : 'Test' }
-            </Typography>
-          </Grid>
-        </Grid>
+        {customerPaperList.map(element => (
+          <div>
+            <hr/>
+            <Grid container>
+              <Grid item sm={6} xs={6}>
+                <Typography 
+                  className={classes.typography}
+                  variant="subtitle2"
+                >
+                  {element[0]}
+                </Typography>
+              </Grid>
+              <Grid item sm={6} xs={6}>
+                <Typography 
+                  className={classes.typography}
+                  variant="subtitle2"
+                >
+                  {element[1]}
+                </Typography>
+              </Grid>
+            </Grid>
+          </div>
+        ))}
       </Paper>
     )
   }
