@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 // combine multi HOC
 import { compose } from 'recompose'
 // import picture
-import DriverPicture from '../../../assets/DriverPicture.png'
+import DriverPicture from '../../../../../public/img/DriverPicture.png'
 // import child components
 import ValidationStatusIcon from './ValidationStatusIcon'
 
@@ -34,12 +34,33 @@ const styles = theme => ({
     verticalAlign: 'middle', 
     marginRight: 10,
     marginLeft: 10
+  },
+  gridContainer: {
+    alignItems: 'center'
   }
 })
 
 class DriverPaper extends Component {
   render() {
     const { classes, orderOnSelect } = this.props
+    const driverAttributeList = [
+      ["Bằng lái số", null, orderOnSelect.driverLicNum],
+      [
+        "Ngày hết hạn", 
+        <ValidationStatusIcon inputDate={orderOnSelect.driverLicExpdate}/>,
+        orderOnSelect.driverLicExpdate
+      ],
+      [
+        "Giấy chứng nhận huấn luyện nghiệp vụ phòng cháy chữa cháy",
+        null,
+        orderOnSelect.fireFightingCertNum
+      ],
+      [
+        "Ngày hết hạn",
+        <ValidationStatusIcon inputDate={orderOnSelect.driverLicExpdate} />,
+        orderOnSelect.fireFightingExpdate
+      ]
+    ]
     return (
       <Paper className={classes.paper} >
         <Grid container >
@@ -63,12 +84,14 @@ class DriverPaper extends Component {
             </Grid>
             <hr/>
             <Grid container>
-              <Grid item sm={6} >
+              <Grid item sm={5} >
                 <Typography className={classes.typography}>
-                  CMND:
+                  CMND
                 </Typography>
               </Grid>
-              <Grid item sm={6} >
+              {/* space between */}
+              <Grid item sm={2}></Grid>
+              <Grid item sm={5} >
                 <Typography className={classes.typography}>
                   {orderOnSelect.driverIdNum}
                 </Typography>
@@ -78,7 +101,7 @@ class DriverPaper extends Component {
             <Grid container alignItems="center">
               <Grid item sm={12} md={5} >
                 <Typography className={classes.typography}>
-                  Ngày hết hạn:
+                  Ngày hết hạn
                 </Typography>
               </Grid>
               <Grid item sm={2} md={2} >
@@ -92,93 +115,26 @@ class DriverPaper extends Component {
             </Grid>
           </Grid>
         </Grid>
-        <hr/>
-        <Grid container>
-          <Grid item sm={7}>
-            <Typography
-              className={classes.typography}
-            >
-              Bằng lái số:
-            </Typography>
-          </Grid>
-          <Grid item sm={2}>
-          </Grid>
-          <Grid item sm={3}>
-            <Typography
-              className={classes.typography}
-            >
-              {orderOnSelect.driverLicNum} 
-            </Typography>
-          </Grid>
-        </Grid>
-        <hr/>
-        <Grid container>
-          <Grid item sm={7}>
-            <Typography
-              className={classes.typography}
-            >
-              Ngày hết hạn:
-            </Typography>
-          </Grid>
-          <Grid item sm={2}>
-            <Typography
-              className={classes.typography}
-            >
-              <ValidationStatusIcon inputDate={orderOnSelect.driverLicExpdate} />
-            </Typography>
-          </Grid>
-          <Grid item sm={3}>
-            <Typography
-              className={classes.typography}
-            >
-              {orderOnSelect.driverLicExpdate}
-            </Typography>
-          </Grid>
-        </Grid>
-        <hr/>
-        <Grid container>
-          <Grid item sm={7}>
-            <Typography
-              className={classes.typography}
-            >
-              Giấy chứng nhận huấn luyện 
-              nghiệp vụ phòng cháy chữa cháy:
-            </Typography>
-          </Grid>
-          <Grid item sm={2}>
-          </Grid>
-          <Grid item sm={3}>
-            <Typography
-              className={classes.typography}
-            >
-              {orderOnSelect.fireFightingCertNum}
-            </Typography>
-          </Grid>
-        </Grid>
-        <hr/>
-        <Grid container alignItems="center">
-          <Grid item sm={7}>
-            <Typography
-              className={classes.typography}
-            >
-              Ngày hết hạn:
-            </Typography>
-          </Grid>
-          <Grid item sm={2}>
-            <Typography
-              className={classes.typography}
-            >
-              <ValidationStatusIcon inputDate={orderOnSelect.driverLicExpdate} />
-            </Typography>
-          </Grid>
-          <Grid item sm={3}>
-            <Typography
-              className={classes.typography}
-            >
-              {orderOnSelect.fireFightingExpdate}
-            </Typography>
-          </Grid>
-        </Grid>
+        {driverAttributeList.map((element, index) => (
+          <Fragment key={index}>
+            <hr/>
+            <Grid container className={classes.gridContainer}>
+              <Grid item sm={7}>
+                <Typography className={classes.typography}>
+                  {element[0]}
+                </Typography>
+              </Grid>
+              <Grid item sm={2}>
+                {element[1]}
+              </Grid>
+              <Grid item sm={3}>
+                <Typography className={classes.typography}>
+                  {element[2]}
+                </Typography>
+              </Grid>
+            </Grid>
+          </Fragment>
+        ))}
       </Paper>
     )
   }
@@ -187,7 +143,7 @@ class DriverPaper extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    orderOnSelect: state.rfidCodeReducer.orderOnSelect
+    orderOnSelect: state.rfid.orderOnSelect
   }
 }
 export default compose(

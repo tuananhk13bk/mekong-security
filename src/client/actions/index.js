@@ -7,7 +7,7 @@ import {
   TOGGLE_DIALOG,
   CLEAR_ALL_RFID_STATE,
   SET_ORDER_PAPER_BACKGROUND_COLOR
-} from './actionList'
+} from './actionTypes'
 
 export const readRfidCode = rfidCode => {
   return {

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
-import Vehicle from '../../../../assets/Vehicle.png'
-import Logo from '../../../../assets/Logo.png'
+import Vehicle from '../../../../../../public/img/Vehicle.png'
+import Logo from '../../../../../../public/img/Logo.png'
 
 const styles = {
   typography: {

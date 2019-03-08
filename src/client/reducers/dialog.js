@@ -1,6 +1,6 @@
 import {
   TOGGLE_DIALOG
-} from '../actions/actionList'
+} from '../actions/actionTypes'
 
 const initState = {
   dialogIsOpen: false

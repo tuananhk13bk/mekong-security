@@ -5,7 +5,7 @@ import {
   CHANGE_TEXT_FIELD,
   SELECT_ORDER_TO_VERIFY,
   CLEAR_ALL_RFID_STATE
-} from '../actions/actionList'
+} from '../actions/actionTypes'
 // import my ultility
 import DataProcess from '../utils/DataProcess'
 
@@ -44,7 +44,7 @@ const initState = {
   }
 }
 
-const rfidCodeReducer = (state=initState, action) => {
+const rfid = (state=initState, action) => {
   switch (action.type) {
     case READ_RFID_CODE:
       return {
@@ -91,4 +91,4 @@ const rfidCodeReducer = (state=initState, action) => {
   }
 }
 
-export default rfidCodeReducer
+export default rfid

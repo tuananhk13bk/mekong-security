@@ -2,7 +2,7 @@
   "name": "mekong-security-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "electronApp.js",
   "scripts": {
     "start": "webpack-dev-server --port 3000 --compress --mode development",
     "dev": "webpack --mode development --progress",
@@ -46,8 +46,6 @@
     "react-transition-group": "^2.5.3",
     "recompose": "^0.30.0",
     "redux": "^4.0.1",
-    "socket.io": "^2.2.0",
-    "socket.io-client": "^2.2.0",
     "styled-components": "^4.1.3"
   }
 }

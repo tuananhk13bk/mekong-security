@@ -49,57 +49,57 @@ const HelpContent = ({ classes }) => (
     </Typography>
     <div>
       <img 
-        src={require('../../assets/partner/GE.png')} 
+        src={require('../../../../public/img/partner/GE.png')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/Kepware.png')} 
+        src={require('../../../../public/img/partner/Kepware.png')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/ServelecControls.png')} 
+        src={require('../../../../public/img/partner/ServelecControls.png')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/Wonderware.png')} 
+        src={require('../../../../public/img/partner/Wonderware.png')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/Siemens.jpg')} 
+        src={require('../../../../public/img/partner/Siemens.jpg')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/Lantronix.png')} 
+        src={require('../../../../public/img/partner/Lantronix.png')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/Eldon.png')} 
+        src={require('../../../../public/img/partner/Eldon.png')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/DetTronics.png')} 
+        src={require('../../../../public/img/partner/DetTronics.png')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/Rittal.png')} 
+        src={require('../../../../public/img/partner/Rittal.png')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/RockwellAutomation.png')} 
+        src={require('../../../../public/img/partner/RockwellAutomation.png')} 
         alt="Logo"
         className={classes.img}
       ></img>
       <img 
-        src={require('../../assets/partner/RedLion.png')} 
+        src={require('../../../../public/img/partner/RedLion.png')} 
         alt="Logo"
         className={classes.img}
       ></img>

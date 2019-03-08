@@ -66,8 +66,8 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    codeOnFind: state.rfidCodeReducer.codeOnFind,
-    orderOnSelect: state.rfidCodeReducer.orderOnSelect
+    codeOnFind: state.rfid.codeOnFind,
+    orderOnSelect: state.rfid.orderOnSelect
   }
 }
 

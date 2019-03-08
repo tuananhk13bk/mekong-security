@@ -15,7 +15,7 @@ import { toggleDialog,
 // import from redux
 import { bindActionCreators } from 'redux'
 // import pictures
-import WarningPicture from '../../../../assets/Warning.png'
+import WarningPicture from '../../../../../../public/img/Warning.png'
 // import APIs
 import updateOrderStatus from '../../../../apis/updateOrderStatus'
 // import from react router
@@ -105,9 +105,9 @@ class ScanDialogContent extends Component {
 const mapStateToProps = (state) => {
   return {
     dialogIsOpen: state.dialog.dialogIsOpen,
-    codeOnFind: state.rfidCodeReducer.codeOnFind,
-    valueInTextFieldIsFound: state.rfidCodeReducer.valueInTextFieldIsFound,
-    orderOnSelect: state.rfidCodeReducer.orderOnSelect,
+    codeOnFind: state.rfid.codeOnFind,
+    valueInTextFieldIsFound: state.rfid.valueInTextFieldIsFound,
+    orderOnSelect: state.rfid.orderOnSelect,
   }
 }
 

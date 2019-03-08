@@ -4,7 +4,6 @@ const camelcaseKeys = require('camelcase-keys')
 const QUERY_STRING = 
     `SELECT 
       work_order.work_order_code, 
-      work_order.rfid_sys_num, 
       profile_cus.cus_full_name, 
       work_order_item.product_full_name,
       work_order_item.amount,

@@ -4,11 +4,11 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 // Import root reducer
-import rootReducer from './reducers'
+import root from './reducers'
 // Components
 import App from './components/App'
 // Create store
-const store = createStore(rootReducer)
+const store = createStore(root)
 // Create theme
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import blue from '@material-ui/core/colors/blue'
@@ -30,7 +30,10 @@ const theme = createMuiTheme({
   },
   text: {
     primary: blue
-  }
+  },
+  typography: {
+    useNextVariants: true,
+  },
 })
 
 render(

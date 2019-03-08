@@ -1,3 +1,4 @@
+const dbConnect = require('../dbConnect')
 
 const QUERY_STRING = 
 `
@@ -6,6 +7,7 @@ VALUES ($1, $2, $3)
 `
 
 async function createRfidEvent(client, [rfidTagNum, rfidReaderCode, readDateTime]) {
+  const client = await dbConnect()
   try {
     await client.query(QUERY_STRING, [rfidTagNum, rfidReaderCode, readDateTime])
     return `RFID event created with tag number: ${rfidTagNum}`

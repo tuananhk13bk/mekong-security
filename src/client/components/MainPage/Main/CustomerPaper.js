@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 // import from @material-ui
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles'
 // import from Redux
 import { connect } from 'react-redux'
 // Import logo
-import Logo from '../../../assets/Logo.png'
+import Logo from '../../../../../public/img/Logo.png'
 //
 import { compose } from 'recompose'
 
@@ -54,7 +54,7 @@ class CustomerPaper extends Component {
           </Grid>
         </Grid>
         {customerPaperList.map(element => (
-          <div>
+          <Fragment key={element[0]}>
             <hr/>
             <Grid container>
               <Grid item sm={6} xs={6}>
@@ -74,7 +74,7 @@ class CustomerPaper extends Component {
                 </Typography>
               </Grid>
             </Grid>
-          </div>
+          </Fragment>
         ))}
       </Paper>
     )
@@ -84,7 +84,7 @@ class CustomerPaper extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    orderOnSelect: state.rfidCodeReducer.orderOnSelect
+    orderOnSelect: state.rfid.orderOnSelect
   }
 }
 export default compose(

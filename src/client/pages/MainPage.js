@@ -58,19 +58,6 @@ class MainPage extends React.Component {
     this.setState(state => ({ mobileOpen: !state.mobileOpen }));
   };
 
-  handleAppBarTitleChange = (input) => {
-    switch (input) {
-      case '/main/':
-        return "Xác thực thông tin"
-      case '/main':
-        return "Xác thực thông tin"
-      case "/settings":
-        return "Cài đặt"
-      case "/help":
-        return "Trợ giúp"
-    }
-  }
-
   render() {
     const { classes, theme, children } = this.props;
 

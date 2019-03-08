@@ -1,14 +1,14 @@
 // Import child reducers
-import rfidCodeReducer from './rfidCodeReducer'
+import rfid from './rfid'
 import dialog from './dialog'
 import orderPaper from './orderPaper'
 
 import { combineReducers } from 'redux'
 
-const rootReducer = combineReducers({
-  rfidCodeReducer,
+const root = combineReducers({
+  rfid,
   dialog,
   orderPaper
 })
 
-export default rootReducer
+export default root

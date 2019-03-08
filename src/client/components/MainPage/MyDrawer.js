@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 import Avatar from '@material-ui/core/Avatar'
 import { withStyles } from '@material-ui/core/styles'
 // Import company logo file
-import Logo from '../../assets/Logo.png'
+import Logo from '../../../../public/img/Logo.png'
 // Import material-ui-icons
 import VerifiedUser from '@material-ui/icons/VerifiedUser'
 import Settings from '@material-ui/icons/Settings'
@@ -23,11 +23,6 @@ const mainDrawerList = [
     id: '',
     title: 'Theo dõi xe',
     icon: <CompareArrows />
-  },
-  {
-    id: 'main',
-    title: "Xác thực",
-    icon: <VerifiedUser />
   },
 ]
 

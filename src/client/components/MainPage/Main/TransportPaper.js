@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 // combine multi HOC
 import { compose } from 'recompose'
 // Import images
-import Transport from '../../../assets/Transport.png'
+import Transport from '../../../../../public/img/Transport.png'
 // import child components
 import ValidationStatusIcon from './ValidationStatusIcon'
 
@@ -81,7 +81,7 @@ class TransportPaper extends Component {
         </Grid>
         {certificateExpDateList.map(([title, date]) => {
           return (
-            <div key={title}>
+            <Fragment key={title}>
               <hr/>
               <Grid 
                 container
@@ -111,7 +111,7 @@ class TransportPaper extends Component {
                   </Typography>
                 </Grid>
               </Grid>
-            </div>
+            </Fragment>
           )
         })}
         
@@ -122,7 +122,7 @@ class TransportPaper extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    orderOnSelect: state.rfidCodeReducer.orderOnSelect
+    orderOnSelect: state.rfid.orderOnSelect
   }
 }
 export default compose(

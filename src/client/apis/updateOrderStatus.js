@@ -1,15 +1,15 @@
 
 
-async function updateOrderStatus(id, data) {
+async function updateOrderStatus(workOrderCode, statusId) {
   try {
-    await fetch(`/api/db/put/${id}`, {
-      // await fetch(`http://localhost:8000/api/db/put/${id}`, {
+    // await fetch(`/api/db/put/order/${workOrderCode}`, {
+      await fetch(`http://localhost:8000/api/db/put/order/${workOrderCode}`, {
       method: 'PUT',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(statusId)
     })
   }
   catch (err) {

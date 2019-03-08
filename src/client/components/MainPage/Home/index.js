@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Header from './Header'
 import OrderPaper from './OrderPaper/'
 // import APIs
-import getAllOrder from '../../../apis/getAllOrder'
+import readAllOrder from '../../../apis/readAllOrder'
 // import actions
 import { receiveDataFromDb } from '../../../actions'
 // import from redux
@@ -20,7 +20,7 @@ class Home extends Component {
 
   componentDidMount() {
     const { receiveDataFromDb } = this.props
-    getAllOrder()
+    readAllOrder()
       .then(data => receiveDataFromDb(data))
   }
 
@@ -58,9 +58,9 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    dataFromDb: state.rfidCodeReducer.dataFromDb,
-    orderListOnSearch: state.rfidCodeReducer.orderListOnSearch,
-    codeOnFind: state.rfidCodeReducer.codeOnFind
+    dataFromDb: state.rfid.dataFromDb,
+    orderListOnSearch: state.rfid.orderListOnSearch,
+    codeOnFind: state.rfid.codeOnFind
   }
 }
 

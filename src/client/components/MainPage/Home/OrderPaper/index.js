@@ -22,6 +22,7 @@ const styles = theme => ({
 
 class OrderPaper extends Component {
   render() {
+    console.log(this.props.theme)
     const { // style
             classes, 
             // props from parent

@@ -1,6 +1,6 @@
 import {
   SET_ORDER_PAPER_BACKGROUND_COLOR
-} from '../actions/actionList'
+} from '../actions/actionTypes'
 
 const initState = {
   orderPaperBackgroundColor: ''

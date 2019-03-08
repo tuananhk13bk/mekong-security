@@ -19,9 +19,8 @@ class DataProcess {
   static filterAllOrderOnSearch = (arrayInput, conditionValue) => {
     const result = arrayInput.filter(element => {
       return (
-        element.workOrderCode.toLowerCase().includes(conditionValue)
-        ||
-        element.rfidSysNum.toLowerCase().includes(conditionValue)
+        convertVietnamese(element.workOrderCode)
+          .includes(convertVietnamese(conditionValue))
         ||
         convertVietnamese(element.transCoFullName)
           .includes(convertVietnamese(conditionValue))
@@ -29,14 +28,17 @@ class DataProcess {
         convertVietnamese(element.cusFullName)
           .includes(convertVietnamese(conditionValue))
         ||
-        element.productFullName.toLowerCase().includes(conditionValue.toLowerCase())
+        convertVietnamese(element.productFullName)
+          .includes(convertVietnamese(conditionValue))
         ||
         convertVietnamese(element.driverFullName)
           .includes(convertVietnamese(conditionValue))
         ||
-        element.driverIdNum.toLowerCase().includes(conditionValue.toLowerCase())
+        convertVietnamese(element.driverIdNum)
+          .includes(convertVietnamese(conditionValue))
         ||
-        element.plateNum.toLowerCase().includes(conditionValue.toLowerCase())
+        convertVietnamese(element.plateNum)
+          .includes(convertVietnamese(conditionValue))
       )
     })
     return result
