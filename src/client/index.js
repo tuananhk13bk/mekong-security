@@ -20,7 +20,7 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       main: '#2196f3',
-      light: '#2196f3'
+      light: '#2196f3',
     },
     secondary: {
       main: yellow[600],
@@ -44,6 +44,7 @@ render(
     </Provider>
   , document.getElementById('root')
 )
+
 
 
 

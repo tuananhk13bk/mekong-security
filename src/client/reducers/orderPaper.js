@@ -1,17 +1,28 @@
 import {
-  SET_ORDER_PAPER_BACKGROUND_COLOR
+  SELECT_ORDER_TAB,
+  SELECT_RADIO_BUTTON
 } from '../actions/actionTypes'
 
+// import constants
+import { ORDER_TO_AUTHENTICATE } from '../constants/tabId'
+
 const initState = {
-  orderPaperBackgroundColor: ''
+  orderPaperBackgroundColor: '',
+  tabIdOnSelect: ORDER_TO_AUTHENTICATE,
+  radioButtonOnSelect: ''
 }
 
 const orderPaper = (state=initState, action) => {
   switch (action.type) {
-    case SET_ORDER_PAPER_BACKGROUND_COLOR:
+    case SELECT_ORDER_TAB:
       return {
         ...state,
-        orderPaperBackgroundColor: action.color
+        tabIdOnSelect: action.tabId
+      }
+    case SELECT_RADIO_BUTTON:
+      return {
+        ...state,
+        radioButtonOnSelect: action.radioButtonValue
       }
     default:
       return state

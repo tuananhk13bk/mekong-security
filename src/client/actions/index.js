@@ -1,31 +1,20 @@
 import {
-  READ_RFID_CODE,
   RECEIVE_DATA_FROM_DB,
-  SUBMIT_RFID_CODE,
   CHANGE_TEXT_FIELD,
   SELECT_ORDER_TO_VERIFY,
   TOGGLE_DIALOG,
   CLEAR_ALL_RFID_STATE,
-  SET_ORDER_PAPER_BACKGROUND_COLOR
+  SELECT_ORDER_TAB,
+  SELECT_RADIO_BUTTON,
+  CHANGE_RFID_CODE_TEXT_FIELD,
+  CHANGE_RFID_READER_CODE_TEXT_FIELD,
+  SUBMIT_RFID
 } from './actionTypes'
-
-export const readRfidCode = rfidCode => {
-  return {
-    type: READ_RFID_CODE,
-    rfidCode
-  }
-}
 
 export const receiveDataFromDb = dataFromDb => {
   return {
     type: RECEIVE_DATA_FROM_DB,
     dataFromDb
-  }
-}
-
-export const submitRfidCode = () => {
-  return {
-    type: SUBMIT_RFID_CODE,
   }
 }
 
@@ -55,10 +44,36 @@ export const clearAllRfidState = () => {
   }
 }
 
-export const setOrderPaperBackgroundColor = (color) => {
-  console.log(color)
+export const selectOrderTab = (tabId) => {
   return {
-    type: SET_ORDER_PAPER_BACKGROUND_COLOR,
-    color
+    type: SELECT_ORDER_TAB,
+    tabId
+  }
+}
+
+export const selectRadioButton = (radioButtonValue) => {
+  return {
+    type: SELECT_RADIO_BUTTON,
+    radioButtonValue
+  }
+}
+
+export const changeRfidCodeTextField = (value) => {
+  return {
+    type: CHANGE_RFID_CODE_TEXT_FIELD,
+    value
+  }
+}
+
+export const changeRfidReaderCodeTextField = (value) => {
+  return {
+    type: CHANGE_RFID_READER_CODE_TEXT_FIELD,
+    value
+  }
+}
+
+export const submitRfid = () => {
+  return {
+    type: SUBMIT_RFID
   }
 }

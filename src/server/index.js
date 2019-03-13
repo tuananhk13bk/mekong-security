@@ -5,10 +5,20 @@ const server = require('http').createServer(app)
 // Declare middleware
 const bodyParser = require('body-parser')
 // import APIs
-const { readAllOrder, 
-        handleRfidOnRead,
-      } = require('./apis/db')
-const updateOrderStatus = require('./apis/db/handleRfidOnRead/updateOrderStatus')
+const {
+  readAllOrder,
+} = require('./apis/db')
+const {
+ createRfidEvent,
+ createRfidSysNumOfOrder,
+ updateOrderStatus,
+ updateRfidSysNumInRfid,
+ readValidRfidByRfidCode
+} = require('./apis/db/handleRfidOnRead')
+
+const {
+  updateRfidStatus,
+ } = require('./apis/db/handleReassignRfid')
 // Declare socket.io, emit an event to client when COM port has data
 // const io = require('socket.io')(server)
 // use body-parser
@@ -22,10 +32,20 @@ app.use(
 // Use static file (build from React)
 app.use(express.static('./dist'))
 
-// server response
-app.get('/api/db/get/all-order', readAllOrder)
-// app.put('/api/db/put/:id', updateOrderStatus)
-app.put('/api/db/put/order/:workOrderCode', updateOrderStatus)
+// route
+app.post('/api/db/all-order/', readAllOrder)
+
+app.put('/api/db/order/:workOrderCode', updateOrderStatus)
+
+app.get('/api/db/rfid/:rfidCode', readValidRfidByRfidCode)
+
+app.post('/api/db/rfid-event', createRfidEvent)
+
+app.post('/api/db/rfid', createRfidSysNumOfOrder)
+
+app.put('/api/db/rfid/:rfidCode', updateRfidSysNumInRfid)
+
+
 // send data to React client when COM port has data
 // port.on('data', data => io.emit('data', decoder.end(data)))
 

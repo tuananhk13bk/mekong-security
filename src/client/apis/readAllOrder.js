@@ -1,14 +1,21 @@
 
-async function getAllOrder() {
+import axios from 'axios'
+
+const readAllOrder = async(orderStatusId1, orderStatusId2, arrivalDate) => {
   try {
-    let res = await fetch('http://localhost:8000/api/db/get/all-order')
-    // let res = await fetch('/api/db/get/all-order')
-    let resJson = await res.json()
-    return resJson
+    const body = {
+      orderStatusId1, 
+      orderStatusId2, 
+      arrivalDate
+    }
+    // const res = await axios.post(`http://localhost:8000/api/db/all-order/`, body)
+    const res = await axios.post(`/api/db/all-order/`, body)
+    const result = res.data
+    return result
   }
   catch (err) {
     console.error(`Error is: ${err}`)
   }
 }
 
-export default getAllOrder
+export default readAllOrder

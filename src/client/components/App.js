@@ -1,10 +1,10 @@
 import React from 'react'
-import MainPage from '../pages/MainPage'
+import MainPage from '../layout/MainPage'
 import { HashRouter, Route, Switch } from 'react-router-dom'
-import VerifyContent from './MainPage/Main/VerifyContent'
-import SettingsContent from './MainPage/SettingsContent'
-import HelpContent from './MainPage/HelpContent'
-import HomeContent from './MainPage/Home'
+import VerifyContent from './VerifyContent/VerifyContent'
+import SettingsContent from './SettingsContent/SettingsContent'
+import HelpContent from './HelpContent/HelpContent'
+import OrderListContentContainer from '../containers/OrderListContent/OrderListContentContainer'
 import styled, { keyframes } from "styled-components";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 
@@ -96,7 +96,7 @@ const App = () => {
                     <Route exact path="/" render={() => {
                       return (
                           <HomePageElm>
-                            <HomeContent />
+                            <OrderListContentContainer />
                           </HomePageElm>
                       )
                     }} />
