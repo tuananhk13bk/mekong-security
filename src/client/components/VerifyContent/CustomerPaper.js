@@ -38,7 +38,7 @@ class CustomerPaper extends Component {
       <Paper className={classes.paper} >
         <Grid container>
           <Grid item sm={3}>
-            <img src={Logo} alt="Logo" className={classes.companyLogo}/>
+            <img src={'Logo'} alt="Logo" className={classes.companyLogo}/>
           </Grid>
           <Grid item sm={9}>
             <Typography 

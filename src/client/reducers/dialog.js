@@ -2,14 +2,14 @@ import {
   TOGGLE_DIALOG,
   CHANGE_RFID_CODE_TEXT_FIELD,
   CHANGE_RFID_READER_CODE_TEXT_FIELD,
-  SUBMIT_RFID
+  EMIT_SUBMIT_RFID_ERROR
 } from '../actions/actionTypes'
 
 const initState = {
   dialogIsOpen: false,
   rfidCodeInTextField: '',
   rfidReadercodeInTextField: '',
-  rfidSubmitError: false
+  errorOnSubmit: false
 }
 
 const dialog = (state=initState, action) => {
@@ -23,19 +23,18 @@ const dialog = (state=initState, action) => {
     case CHANGE_RFID_CODE_TEXT_FIELD:
       return {
         ...state,
-        rfidCodeInTextField: action.value
+        rfidCodeInTextField: action.value,
       }
 
     case CHANGE_RFID_READER_CODE_TEXT_FIELD:
       return {
         ...state,
-        rfidReadercodeInTextField: action.value
+        rfidReadercodeInTextField: action.value,
       }
-
-    case SUBMIT_RFID:
+    case EMIT_SUBMIT_RFID_ERROR:
       return {
         ...state,
-        
+        errorOnSubmit: true
       }
     default:
       return state

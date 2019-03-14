@@ -1,5 +1,6 @@
 // Declare my server
 const express = require('express')
+const path = require('path')
 const app = express()
 const server = require('http').createServer(app)
 // Declare middleware
@@ -22,6 +23,10 @@ const {
 // Declare socket.io, emit an event to client when COM port has data
 // const io = require('socket.io')(server)
 // use body-parser
+
+
+// const imgPath2 = '\\\\192.168.1.18\\uploads\\driver\\10\\image'
+// app.use('/images', express.static(imgPath2))
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({

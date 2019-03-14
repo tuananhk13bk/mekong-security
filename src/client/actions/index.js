@@ -8,7 +8,8 @@ import {
   SELECT_RADIO_BUTTON,
   CHANGE_RFID_CODE_TEXT_FIELD,
   CHANGE_RFID_READER_CODE_TEXT_FIELD,
-  SUBMIT_RFID
+  SUBMIT_RFID,
+  EMIT_SUBMIT_RFID_ERROR
 } from './actionTypes'
 
 export const receiveDataFromDb = dataFromDb => {
@@ -75,5 +76,11 @@ export const changeRfidReaderCodeTextField = (value) => {
 export const submitRfid = () => {
   return {
     type: SUBMIT_RFID
+  }
+}
+
+export const emitSubmitRfidError = () => {
+  return {
+    type: EMIT_SUBMIT_RFID_ERROR
   }
 }

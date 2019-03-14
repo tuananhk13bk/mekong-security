@@ -6,7 +6,10 @@ import { connect } from 'react-redux'
 //import actions
 import { selectOrderTab, receiveDataFromDb } from '../../../actions'
 // import API
-import {readAllOrder} from '../../../apis'
+import {
+  readAllOrder,
+  updateRfidSysNumInRfid
+} from '../../../apis'
 // import constants
 import { ORDER_TO_AUTHENTICATE, ORDER_TO_REASSIGN, ORDER_TO_RETURN } 
 from '../../../constants/tabId'
@@ -37,6 +40,8 @@ class TabNavigationContainer extends React.Component {
     }
   };
 
+  
+
   render() {
     const {
       // states
@@ -56,6 +61,7 @@ class TabNavigationContainer extends React.Component {
 
 const mapStateToProps = (state) => {
   const { tabIdOnSelect } = state.orderPaper
+  const { orderOnSelect } = state.rfid
   return {
     tabIdOnSelect
   }

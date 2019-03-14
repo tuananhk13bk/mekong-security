@@ -56,6 +56,7 @@ class OrderPaperContainer extends Component {
           />
         </CardActionArea>
       )
+      // ORDER_TO_REASSIGN
     } else if (tabIdOnSelect === ORDER_TO_REASSIGN) {
       backgroundColor = 'white'
       cardContent = (

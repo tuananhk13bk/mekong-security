@@ -17,7 +17,8 @@ module.exports = {
   entry: './src/client/index.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: './src/client/assets/'
   },
   devtool: 'cheap-module-source-map',
   module: {
@@ -35,6 +36,18 @@ module.exports = {
             options: {},
           },
         ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: '[name].[ext]',
+            }
+          }
+        ]
       },
       {
         test: /\.css$/,

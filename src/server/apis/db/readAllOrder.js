@@ -1,7 +1,7 @@
 const dbConnect = require('./dbConnect')
 const camelcaseKeys = require('camelcase-keys')
 
-const QUERY_STRING = 
+let QUERY_STRING = 
 `
 SELECT 
   work_order.work_order_code, 
@@ -58,7 +58,9 @@ const readAllOrder = async(req, res) => {
     async () => {
       try {
         const result = await client.query(QUERY_STRING,[
-          orderStatusId1, orderStatusId2, arrivalDate
+          orderStatusId1, 
+          orderStatusId2, 
+          arrivalDate
         ])
         res.status(200).json(camelcaseKeys(result.rows))
       } finally {

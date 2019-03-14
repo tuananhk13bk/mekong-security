@@ -30,11 +30,12 @@ class DialogContent extends Component {
       orderOnSelect,
       rfidCodeInTextField,
       rfidReadercodeInTextField,
+      errorOnSubmit,
 
       toggleDialog,
       handleSubmitRfid,
       changeRfidCodeTextField,
-      changeRfidReaderCodeTextField
+      changeRfidReaderCodeTextField,
     } = this.props
     return (
       <div>
@@ -56,6 +57,7 @@ class DialogContent extends Component {
           <LinearProgress/>
           <form>
             <TextField
+              error={errorOnSubmit}
               autoFocus
               value={rfidCodeInTextField}
               onChange={(event) => changeRfidCodeTextField(event.target.value)}

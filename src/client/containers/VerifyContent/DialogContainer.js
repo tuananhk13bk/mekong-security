@@ -5,7 +5,8 @@ import { compose } from 'recompose'
 import { toggleDialog,
          clearAllRfidState,
          changeRfidCodeTextField,
-         changeRfidReaderCodeTextField  
+         changeRfidReaderCodeTextField,
+         emitSubmitRfidError
        } from '../../actions'
 // import from redux
 import { bindActionCreators } from 'redux'
@@ -38,18 +39,19 @@ class DialogContainer extends Component {
       rfidReadercodeInTextField,
       orderOnSelect,
       // action
-      toggleDialog
+      toggleDialog,
+      emitSubmitRfidError
     } = this.props
     const rfidCode = await readValidRfidByRfidCode(rfidCodeInTextField)
     if (!rfidCode) {
       // throw error
-      console.log('error')
+      emitSubmitRfidError()
     } else {
       const rfidSysNum = generateRfidSysNum(orderOnSelect.workOrderCode)
       // CREATE rfid_sys_num of work_order
       await createRfidSysNumOfOrder(orderOnSelect.workOrderCode, rfidSysNum)
       // UPDATE rfid_sys_num in rfid
-      await updateRfidSysNumInRfid(rfidCode, rfidSysNum, true)
+      await updateRfidSysNumInRfid(rfidCode, rfidSysNum, true, false)
       // UPDATE work_order with status_id === AUTHENTICATED
       await updateOrderStatus(orderOnSelect.workOrderCode, AUTHENTICATED)
       // CREATE rfid_events
@@ -72,10 +74,11 @@ class DialogContainer extends Component {
       orderOnSelect,
       rfidCodeInTextField,
       rfidReadercodeInTextField,
+      errorOnSubmit,
       // actions
       toggleDialog,
       changeRfidCodeTextField,
-      changeRfidReaderCodeTextField
+      changeRfidReaderCodeTextField,
     } = this.props
     return (
       <DialogContent
@@ -83,6 +86,7 @@ class DialogContainer extends Component {
         orderOnSelect={orderOnSelect}
         rfidCodeInTextField={rfidCodeInTextField}
         rfidReadercodeInTextField={rfidReadercodeInTextField}
+        errorOnSubmit={errorOnSubmit}
 
         toggleDialog={toggleDialog}
         handleSubmitRfid={this.handleSubmitRfid}
@@ -99,7 +103,8 @@ const mapStateToProps = (state) => {
     orderOnSelect: state.rfid.orderOnSelect,
 
     rfidCodeInTextField: state.dialog.rfidCodeInTextField,
-    rfidReadercodeInTextField: state.dialog.rfidReadercodeInTextField
+    rfidReadercodeInTextField: state.dialog.rfidReadercodeInTextField,
+    errorOnSubmit: state.dialog.errorOnSubmit
   }
 }
 
@@ -108,7 +113,8 @@ const mapDispatchToProps = (dispatch) => {
     toggleDialog,
     clearAllRfidState,
     changeRfidCodeTextField,
-    changeRfidReaderCodeTextField  
+    changeRfidReaderCodeTextField,
+    emitSubmitRfidError  
   }, dispatch)
 }
 

@@ -2,7 +2,10 @@ const dbConnect = require('../dbConnect')
 
 const QUERY_STRING = 
 `
-  UPDATE rfid SET enable_var = $1
+  UPDATE rfid 
+  SET 
+    enable_var = $1
+    
   WHERE rfid_code = $2
 `
 
